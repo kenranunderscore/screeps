@@ -12,7 +12,7 @@ coffeeExecutable = if process.platform is 'win32' then 'coffee.cmd' else 'coffee
 build = (options, callback) ->
     console.log 'Building...'
     coffee = spawn coffeeExecutable,
-        ['-c', '-b', '-o', 'lib',
+        ['-c', '-b', '-o', 'lib'
          options.sourceDir or 'src']
     coffee.stderr.on 'data', (data) ->
         process.stderr.write data.toString()
@@ -35,4 +35,8 @@ task 'build', 'Build .js from .coffee', (options) ->
     build options
 
 task 'deploy', 'Build, then deploy lib/ contents to target folder', (options) ->
+    deploy options
+
+task 'deploy_local', 'Deploy to local private server (single player)', (options) ->
+    options.targetDir = 'C:\\Users\\Johannes\\AppData\\Local\\Screeps\\scripts\\127_0_0_1___21025\\default'
     deploy options
