@@ -6,5 +6,5 @@ module.exports =
                 creep.moveTo sources[0]
         else
             spawn = Game.spawns['Spawn1']
-            if creep.transfer(spawn) is ERR_NOT_IN_RANGE
+            if creep.transfer(spawn, RESOURCE_ENERGY) is ERR_NOT_IN_RANGE
                 creep.moveTo spawn
