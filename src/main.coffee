@@ -1,2 +1,5 @@
+role_harvester = require 'role_harvester'
+
 module.exports.loop = ->
-	return
+    for creepName, creep of Game.creeps
+        role_harvester.run creep
