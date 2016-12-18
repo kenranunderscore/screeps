@@ -25,6 +25,7 @@ deploy = (options) ->
     build options, ->
         if options.targetDir?
             console.log "Deploying to #{options.targetDir}..."
+            fs.emptyDirSync "#{options.targetDir}"
             for file in fs.readdirSync 'lib'
                 fileWithPath = path.resolve 'lib', file
                 fs.copySync fileWithPath, "#{options.targetDir}/#{file}"
